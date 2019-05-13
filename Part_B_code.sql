@@ -41,10 +41,12 @@ AND A.BA_AUTHORID=N.AUTHOR_ID;*/
 
 /*Write a query that will list all the publishers, their details (name, etc.) and total number of published books. Display your output in the decreasing order of total number of publications.*/
 
-SELECT PUB_ID,PUB_NAME,PUB_CONTACT,PUB_PHONE
-FROM PUBLISHER;
-
-SELECT B.BOOK_PUBID,COUNT(B.BOOK_PUBID)
-FROM BOOK B
-GROUP BY B.BOOK_PUBID
-ORDER BY B.BOOK_PUBID ASC;
+SELECT P.PUB_ID AS "ID",
+              P.PUB_NAME AS "PUBLISHER NAME",
+              P.PUB_CONTACT AS "CONTACT NAME",
+              P.PUB_PHONE AS "PHONE NO",
+              COUNT(P.PUB_ID) AS "BOOKS PUBLISHED"
+FROM PUBLISHER P,BOOK B
+WHERE P.PUB_ID=B.BOOK_PUBID
+GROUP BY P.PUB_ID,P.PUB_NAME,P.PUB_CONTACT,P.PUB_PHONE
+ORDER BY P.PUB_ID ASC;
