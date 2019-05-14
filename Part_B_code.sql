@@ -41,7 +41,7 @@ AND A.BA_AUTHORID=N.AUTHOR_ID;*/
 
 /*Write a query that will list all the publishers, their details (name, etc.) and total number of published books. Display your output in the decreasing order of total number of publications.*/
 
-SELECT P.PUB_ID AS "ID",
+/*SELECT P.PUB_ID AS "ID",
               P.PUB_NAME AS "PUBLISHER NAME",
               P.PUB_CONTACT AS "CONTACT NAME",
               P.PUB_PHONE AS "PHONE NO",
@@ -49,4 +49,21 @@ SELECT P.PUB_ID AS "ID",
 FROM PUBLISHER P,BOOK B
 WHERE P.PUB_ID=B.BOOK_PUBID
 GROUP BY P.PUB_ID,P.PUB_NAME,P.PUB_CONTACT,P.PUB_PHONE
-ORDER BY P.PUB_ID ASC;
+ORDER BY P.PUB_ID ASC;*/
+
+/*Write a query that will display the states with more than one customer. Display the state with maximum customers first.*/
+/*SELECT C.CUST_STATE AS "STATE",COUNT(C.CUST_NUM) AS "NUMBER OF CUSTOMERS"
+FROM CUSTOMER C
+GROUP BY C.CUST_STATE
+HAVING COUNT(C.CUST_NUM) >1
+ORDER BY COUNT(C.CUST_NUM) DESC ;*/
+
+/*Write a query that will list the publisher(s) with the maximum number of published books. If there is more than one publisher (e.g. 2 publishers) with maximum publications, your query should and list all (i.e. both if 2).*/
+
+/*SELECT P.PUB_ID ,P.PUB_NAME,P.PUB_CONTACT,P.PUB_PHONE,COUNT(P.PUB_ID) AS "BOOK PUBLICATIONS"
+FROM PUBLISHER P,BOOK B
+WHERE P.PUB_ID=B.BOOK_PUBID 
+GROUP BY P.PUB_ID,P.PUB_NAME,P.PUB_CONTACT,P.PUB_PHONE
+HAVING P.PUB_ID=(SELECT MAX(COUNT(P.PUB_ID))
+FROM PUBLISHER P,BOOK B WHERE P.PUB_ID=B.BOOK_PUBID
+GROUP BY P.PUB_ID);*/
